@@ -4,7 +4,7 @@ Go Client for Doppler
 ## Sections to implement
 - [x] Auth 
 - [x] Workplace
-- [ ] Activity logs
+- [x] Activity logs
 - [ ] Environments
 - [ ] Configs
 - [ ] Config logs
