@@ -3,14 +3,14 @@ package doppler
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
 type Projects struct {
 	Projects []Project `json:"projects"`
-	Page     int64     `json:"page"`
+	Page     int       `json:"page"`
 	Success  bool      `json:"success"`
 }
 
@@ -42,8 +42,8 @@ type UpdateProjectParams struct {
 	Description string `json:"description,omitempty"`
 }
 
-//list projects
-func (dp *doppler) ListProjects(page int64, limit *int) (*Projects, error) {
+// list projects
+func (dp *doppler) ListProjects(page int, limit *int) (*Projects, error) {
 	default_per_page := 20
 
 	if limit == nil {
@@ -52,7 +52,7 @@ func (dp *doppler) ListProjects(page int64, limit *int) (*Projects, error) {
 
 	request, err := http.NewRequest(
 		http.MethodGet,
-		fmt.Sprintf("/v3/projects?page=%d&per_page=%d", page, limit),
+		"/v3/projects?page="+strconv.Itoa(page)+"&per_page="+strconv.Itoa(*limit),
 		nil,
 	)
 	if err != nil {
@@ -103,7 +103,7 @@ func (dp *doppler) RetrieveProject(id string) (*IProject, error) {
 	var data IProject
 	req, _ := http.NewRequest(
 		http.MethodGet,
-		fmt.Sprintf("/v3/projects/project?project=%s", id),
+		"/v3/projects/project?project="+id,
 		nil,
 	)
 
@@ -153,7 +153,7 @@ func (dp *doppler) DeleteProject(project_id string) (*Success, error) {
 	req, _ := http.NewRequest(
 		http.MethodDelete,
 		"/v3/projects/project",
-		strings.NewReader(fmt.Sprintf(`{"project":"%s"}`, project_id)),
+		strings.NewReader(`{"project":"`+project_id+`"}`),
 	)
 
 	body, err := dp.makeApiRequest(req)
