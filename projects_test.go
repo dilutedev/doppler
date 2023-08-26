@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestListstatuss(t *testing.T) {
+func TestListProjects(t *testing.T) {
 	dp, err := NewFromEnv()
 	assert.Nil(t, err)
 	assert.NotNil(t, dp)
