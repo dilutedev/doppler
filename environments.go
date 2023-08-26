@@ -33,13 +33,13 @@ type EnvironmentBodyParams struct {
 /*
 List environments
 
-  - projectID: The project's name
+  - projectName: The project's name
 */
-func (dp *doppler) ListEnvironments(projectID string) (*Environments, error) {
+func (dp *doppler) ListEnvironments(projectName string) (*Environments, error) {
 
 	request, err := http.NewRequest(
 		http.MethodGet,
-		"/v3/environments?project="+projectID,
+		"/v3/environments?project="+projectName,
 		nil,
 	)
 	if err != nil {
@@ -61,13 +61,13 @@ func (dp *doppler) ListEnvironments(projectID string) (*Environments, error) {
 /*
 Retrieve environment
 
-  - projectID: The project's name
-  - environmentID: The environment's slug
+  - projectName: The project's name
+  - environmentSlug: The environment's slug
 */
-func (dp *doppler) RetrieveEnvironment(projectID string, environmentID string) (*IEnvironment, error) {
+func (dp *doppler) RetrieveEnvironment(projectName string, environmentSlug string) (*IEnvironment, error) {
 	request, err := http.NewRequest(
 		http.MethodGet,
-		"/v3/environments/environment/?project="+projectID+"&environment="+environmentID,
+		"/v3/environments/environment/?project="+projectName+"&environment="+environmentSlug,
 		nil,
 	)
 	if err != nil {
@@ -89,10 +89,10 @@ func (dp *doppler) RetrieveEnvironment(projectID string, environmentID string) (
 /*
 Create Environment
 
-  - projectID: The project's name
+  - projectName: The project's name
   - params: Request Body parameters
 */
-func (dp *doppler) CreateEnvironment(projectID string, params EnvironmentBodyParams) (*IEnvironment, error) {
+func (dp *doppler) CreateEnvironment(projectName string, params EnvironmentBodyParams) (*IEnvironment, error) {
 	payload, err := json.Marshal(params)
 	if err != nil {
 		return nil, err
@@ -100,7 +100,7 @@ func (dp *doppler) CreateEnvironment(projectID string, params EnvironmentBodyPar
 
 	request, err := http.NewRequest(
 		http.MethodPost,
-		"/v3/environments?project="+projectID,
+		"/v3/environments?project="+projectName,
 		bytes.NewReader(payload),
 	)
 	if err != nil {
@@ -122,13 +122,13 @@ func (dp *doppler) CreateEnvironment(projectID string, params EnvironmentBodyPar
 /*
 Delete Environment
 
-  - projectID: The project's name
-  - environmentID: The environment's slug
+  - projectName: The project's name
+  - environmentSlug: The environment's slug
 */
-func (dp *doppler) DeleteEnvironment(projectID string, environmentID string) (*Success, error) {
+func (dp *doppler) DeleteEnvironment(projectName string, environmentSlug string) (*Success, error) {
 	request, err := http.NewRequest(
 		http.MethodDelete,
-		"/v3/environments/environment?project="+projectID+"&environment="+environmentID,
+		"/v3/environments/environment?project="+projectName+"&environment="+environmentSlug,
 		nil,
 	)
 	if err != nil {
@@ -152,19 +152,19 @@ func (dp *doppler) DeleteEnvironment(projectID string, environmentID string) (*S
 /*
 Rename Environment
 
-  - projectID: The project's name
-  - environmentID: The environment's slug
+  - projectName: The project's name
+  - environmentSlug: The environment's slug
   - params: Request Body parameters
 */
-func (dp *doppler) RenameEnvironment(projectID string, environmentID string, params EnvironmentBodyParams) (*IEnvironment, error) {
+func (dp *doppler) RenameEnvironment(projectName string, environmentSlug string, params EnvironmentBodyParams) (*IEnvironment, error) {
 	payload, err := json.Marshal(params)
 	if err != nil {
 		return nil, err
 	}
 
 	request, err := http.NewRequest(
-		http.MethodPost,
-		"/v3/environments/environment?project="+projectID+"&environment="+environmentID,
+		http.MethodPut,
+		"/v3/environments/environment?project="+projectName+"&environment="+environmentSlug,
 		bytes.NewReader(payload),
 	)
 	if err != nil {
