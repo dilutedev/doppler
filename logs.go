@@ -2,8 +2,8 @@ package doppler
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
+	"strconv"
 )
 
 type ActivityLogs struct {
@@ -56,7 +56,7 @@ func (dp *doppler) RetrieveLogs(page int, limit *int) (*ActivityLogs, error) {
 
 	request, err := http.NewRequest(
 		http.MethodGet,
-		fmt.Sprintf("/v3/logs?page=%d&per_page=%d", page, *limit),
+		"/v3/logs?page="+strconv.Itoa(page)+"&per_page="+strconv.Itoa(*limit),
 		nil,
 	)
 
