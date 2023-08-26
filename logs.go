@@ -7,7 +7,7 @@ import (
 )
 
 type ActivityLogs struct {
-	Page    int64 `json:"page"`
+	Page    int   `json:"page"`
 	Logs    []Log `json:"logs"`
 	Success bool  `json:"success"`
 }
@@ -44,7 +44,7 @@ type User struct {
 }
 
 // list activity logs
-func (dp *doppler) RetrieveLogs(page int64, limit *int) (*ActivityLogs, error) {
+func (dp *doppler) RetrieveLogs(page int, limit *int) (*ActivityLogs, error) {
 	var (
 		default_per_page int = 20
 		data             ActivityLogs
