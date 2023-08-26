@@ -7,9 +7,9 @@ import (
 )
 
 var (
-	test_page   int64 = 1
-	test_limit  int   = 10
-	test_log_id       = "GBIoiNPme2C1vsg6GQ5n3Msz"
+	test_page   int = 1
+	test_limit  int = 10
+	test_log_id     = "GBIoiNPme2C1vsg6GQ5n3Msz"
 )
 
 func TestRetrieveLogs(t *testing.T) {
