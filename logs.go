@@ -80,7 +80,7 @@ func (dp *doppler) RetrieveLog(log_id string) (*ActivityLog, error) {
 	var (
 		request, err = http.NewRequest(
 			http.MethodGet,
-			fmt.Sprintf("/v3/logs/log?log=%s", log_id),
+			"/v3/logs/log?log="+log_id,
 			nil,
 		)
 		data ActivityLog
