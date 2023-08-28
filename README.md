@@ -5,9 +5,9 @@ Go Client for Doppler
 - [x] Auth 
 - [x] Workplace
 - [x] Activity logs
-- [ ] Environments
-- [ ] Configs
-- [ ] Config logs
+- [x] Environments
+- [x] Configs
+- [x] Config logs
 - [ ] Trusted IPs
 - [ ] Secrets + Secret Names
 - [ ] Integrations
