@@ -91,7 +91,7 @@ func (dp *doppler) CreateConfig(params CreateConfigParams) (*IConfig, error) {
 	if err != nil {
 		return nil, err
 	}
-	request, err := http.NewRequest(
+	request, _ := http.NewRequest(
 		http.MethodPost,
 		"/v3/configs",
 		bytes.NewReader(payload),

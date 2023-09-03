@@ -113,7 +113,7 @@ func (dp *doppler) RetrieveConfigLog(project, config, logID string) (*IConfigLog
 - logID: Unique identifier for the log object
 */
 func (dp *doppler) RollbackConfigLog(project, config, logID string) (*IConfigLog, error) {
-	request, err := http.NewRequest(
+	request, _ := http.NewRequest(
 		http.MethodPost,
 		"/v3/configs/config/logs/log/rollback?project="+project+"&config="+config+"&log="+logID,
 		nil,
