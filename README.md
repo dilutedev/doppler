@@ -16,10 +16,10 @@ Go Client for Doppler
 - [ ] Secrets + Secret Names
 - [ ] Integrations
 - [ ] Secrets Sync
-- [-] Dynamic Secrets
+- [ ] Dynamic Secrets
 - [ ] Service Tokens
 - [ ] Invites
 - [ ] Groups
 - [ ] Service Accounts
 - [ ] Audit
-- [-] Share
+- [ ] Share
