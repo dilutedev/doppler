@@ -41,9 +41,10 @@ func TestCreateConfig(t *testing.T) {
 	assert.Nil(t, err)
 	assert.NotNil(t, iConfig)
 	assert.IsType(t, &IConfig{}, iConfig)
-	// creating another config that will be deleted
-	iConfig, err = dp.CreateConfig(CreateConfigParams{Project: projectName, Environment: environmentSlug, Name: environmentSlug + "_test2"})
 
+	// creating another config that will be deleted
+	_, err = dp.CreateConfig(CreateConfigParams{Project: projectName, Environment: environmentSlug, Name: environmentSlug + "_test2"})
+	assert.NotNil(t, err)
 }
 
 func TestRetrieveConfig(t *testing.T) {
