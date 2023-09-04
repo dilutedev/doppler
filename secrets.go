@@ -247,7 +247,7 @@ func (dp *doppler) DownloadSecret(params DownloadSecretParams) (string, error) {
 	}
 	request, err := http.NewRequest(
 		http.MethodGet,
-		""+params.Project+""+params.Config+"&format="+params.Format,
+		url.String(),
 		nil,
 	)
 	if err != nil {
