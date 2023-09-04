@@ -82,7 +82,7 @@ func (dp *doppler) makeApiRequest(request *http.Request) ([]byte, error) {
 		return nil, err
 	}
 
-	if res.StatusCode != 200 {
+	if res.StatusCode != 200 && res.StatusCode != 204 {
 		if err := json.Unmarshal(body, &errData); err != nil {
 			return nil, err
 		}
