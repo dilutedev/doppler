@@ -13,7 +13,7 @@ Go Client for Doppler
 - [x] Configs
 - [x] Config logs
 - [ ] Trusted IPs
-- [ ] Secrets + Secret Names
+- [x] Secrets
 - [ ] Integrations
 - [ ] Secrets Sync
 - [ ] Dynamic Secrets
