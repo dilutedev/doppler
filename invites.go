@@ -21,10 +21,10 @@ type Invite struct {
 func (dp *doppler) ListInvites(page, limit *int) (*Invites, error) {
 	defaultLimit := 20
 	defaultPage := 1
-	if page != nil && *page <= 0 {
+	if page == nil || *page <= 0 {
 		page = &defaultPage
 	}
-	if limit != nil && *limit <= 0 {
+	if limit == nil || *limit <= 0 {
 		limit = &defaultLimit
 	}
 	request, err := http.NewRequest(
