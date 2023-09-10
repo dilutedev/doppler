@@ -14,12 +14,12 @@ Go Client for Doppler
 - [x] Config logs
 - [x] Trusted IPs
 - [x] Secrets
-- [ ] Integrations
+- [x] Integrations
 - [ ] Secrets Sync
 - [x] Dynamic Secrets
 - [ ] Service Tokens
 - [x] Invites
 - [ ] Groups
-- [ ] Service Accounts
+- [x] Service Accounts
 - [ ] Audit
 - [x] Share
