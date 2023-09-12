@@ -26,13 +26,13 @@ type ServiceAccountModel struct {
 }
 
 type ServiceAccountBodyParams struct {
-	Name          string
-	WorkplaceRole WorkplaceRoleObject
+	Name          string              `json:"name,omitempty"`
+	WorkplaceRole WorkplaceRoleObject `json:"workplace_role,omitempty"`
 }
 
 type WorkplaceRoleObject struct {
-	Identifier  string
-	Permissions []string
+	Identifier  string   `json:"identifier,omitempty"`
+	Permissions []string `json:"permissions,omitempty"`
 }
 
 func (dp *doppler) ListServiceAccounts(page, limit *int) (*ServiceAccounts, error) {
