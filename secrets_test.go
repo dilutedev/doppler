@@ -106,7 +106,7 @@ func TestUpdateSecret(t *testing.T) {
 }
 func TestDownloadSecret(t *testing.T) {
 	dp, err := NewFromEnv()
-	
+
 	assert.Nil(t, err)
 	assert.NotNil(t, dp)
 

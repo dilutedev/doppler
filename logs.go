@@ -18,13 +18,13 @@ type ActivityLog struct {
 }
 
 type Log struct {
-	ID                 string  `json:"id"`   // Unique identifier for the object.
-	Text               string  `json:"text"` // Text describing the event.
-	HTML               string  `json:"html"` // HTML describing the event.
-	CreatedAt          string  `json:"created_at"` // Date and time of the object's creation.
-	EnclaveConfig      *string `json:"enclave_config"` // The config's name.
+	ID                 string  `json:"id"`                  // Unique identifier for the object.
+	Text               string  `json:"text"`                // Text describing the event.
+	HTML               string  `json:"html"`                // HTML describing the event.
+	CreatedAt          string  `json:"created_at"`          // Date and time of the object's creation.
+	EnclaveConfig      *string `json:"enclave_config"`      // The config's name.
 	EnclaveEnvironment *string `json:"enclave_environment"` // Unique identifier for the environment object.
-	EnclaveProject     *string `json:"enclave_project"` // Unique identifier for the project object.
+	EnclaveProject     *string `json:"enclave_project"`     // Unique identifier for the project object.
 	User               User    `json:"user"`
 	Diff               *Diff   `json:"diff"`
 }
