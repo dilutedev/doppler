@@ -4,10 +4,10 @@ Go Client for Doppler
 ## Sections to implement
 - [x] Auth
 - [x] Workplace
-- [ ] Workplace Roles
+- [x] Workplace Roles
 - [x] Activity logs
 - [x] Projects
-- [ ] Project Roles
+- [x] Project Roles
 - [ ] Project Members
 - [x] Environments
 - [x] Configs
@@ -15,7 +15,7 @@ Go Client for Doppler
 - [x] Trusted IPs
 - [x] Secrets
 - [x] Integrations
-- [ ] Secrets Sync
+- [x] Secrets Sync
 - [x] Dynamic Secrets
 - [ ] Service Tokens
 - [x] Invites
