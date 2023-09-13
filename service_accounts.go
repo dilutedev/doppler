@@ -93,7 +93,7 @@ func (dp *doppler) RetrieveServiceAccount(slug string) (*ServiceAccountModel, er
 
 func (dp *doppler) CreateServiceAccount(params ServiceAccountBodyParams) (*ServiceAccountModel, error) {
 	if params.WorkplaceRole.Identifier != "" || params.WorkplaceRole.Permissions != nil {
-		return nil, errors.New("You may provide an identifier OR permissions, but not both")
+		return nil, errors.New("you may provide an identifier OR permissions, but not both")
 	}
 	payload, err := json.Marshal(params)
 	if err != nil {
@@ -124,7 +124,7 @@ func (dp *doppler) CreateServiceAccount(params ServiceAccountBodyParams) (*Servi
 
 func (dp *doppler) UpdateServiceAccount(slug string, params ServiceAccountBodyParams) (*ServiceAccountModel, error) {
 	if params.WorkplaceRole.Identifier != "" || params.WorkplaceRole.Permissions != nil {
-		return nil, errors.New("You may provide an identifier OR permissions, but not both")
+		return nil, errors.New("you may provide an identifier OR permissions, but not both")
 	}
 	payload, err := json.Marshal(params)
 	if err != nil {

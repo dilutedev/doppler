@@ -1,14 +1,14 @@
 # go-doppler
 Go Client for Doppler
 
-## Sections to implement
+## Sections Implemented
 - [x] Auth
 - [x] Workplace
 - [x] Workplace Roles
 - [x] Activity logs
 - [x] Projects
 - [x] Project Roles
-- [ ] Project Members
+- [x] Project Members
 - [x] Environments
 - [x] Configs
 - [x] Config logs
@@ -21,5 +21,5 @@ Go Client for Doppler
 - [x] Invites
 - [ ] Groups
 - [x] Service Accounts
-- [ ] Audit
+- [x] Audit
 - [x] Share

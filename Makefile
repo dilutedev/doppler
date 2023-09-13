@@ -2,9 +2,9 @@
 
 include .env
 
-ifdef arg
+ifdef case
 test:
-	DOPPLER_KEY=${DOPPLER_KEY} go test -v -run ${arg}
+	DOPPLER_KEY=${DOPPLER_KEY} go test -v -run ${case}
 else
 test:
 	DOPPLER_KEY=${DOPPLER_KEY} go test -v
