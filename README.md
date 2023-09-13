@@ -1,7 +1,7 @@
 # go-doppler
 Go Client for Doppler
 
-## Sections to implement
+## Sections Implemented
 - [x] Auth
 - [x] Workplace
 - [x] Workplace Roles
