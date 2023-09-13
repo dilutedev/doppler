@@ -8,8 +8,6 @@ import (
 	"strings"
 )
 
-var str strings.Builder
-
 type Secrets struct {
 	Secrets map[string]Secret `json:"secrets"`
 	Success bool              `json:"success"`
