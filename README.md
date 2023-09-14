@@ -19,7 +19,7 @@ Go Client for Doppler
 - [x] Dynamic Secrets
 - [ ] Service Tokens
 - [x] Invites
-- [ ] Groups
+- [x] Groups
 - [x] Service Accounts
 - [x] Audit
 - [x] Share
