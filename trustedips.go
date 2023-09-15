@@ -71,7 +71,7 @@ func (dp *doppler) AddIP(project, config, ip string) (*IP, error) {
 /*
 Delete a trusted IP
 */
-func (dp *doppler) DeleteIP(project, config, ip string) (*Success, error) {
+func (dp *doppler) DeleteIP(project, config, ip string) (string, error) {
 	payload := strings.NewReader("{\"ip\":\"" + ip + "\"}")
 	request, err := http.NewRequest(
 		http.MethodDelete,
@@ -79,18 +79,12 @@ func (dp *doppler) DeleteIP(project, config, ip string) (*Success, error) {
 		payload,
 	)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	body, err := dp.makeApiRequest(request)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
-	data := &Success{}
-	err = json.Unmarshal(body, data)
-	if err != nil {
-		return nil, err
-	}
-
-	return data, nil
+	return string(body), nil
 }
