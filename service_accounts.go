@@ -16,23 +16,23 @@ type ServiceAccount struct {
 }
 
 type ServiceAccounts struct {
-	ServiceAccounts []ServiceAccount `json:"roles,omitempty"`
-	Success         string           `json:"success,omitempty"`
+	ServiceAccounts []ServiceAccount `json:"service_accounts,omitempty"`
+	Success         bool             `json:"success,omitempty"`
 }
 
 type ServiceAccountModel struct {
 	ServiceAccount ServiceAccount `json:"service_account,omitempty"`
-	Success        string         `json:"success,omitempty"`
+	Success        bool           `json:"success,omitempty"`
 }
 
 type ServiceAccountBodyParams struct {
 	Name          string              `json:"name,omitempty"`
-	WorkplaceRole WorkplaceRoleObject `json:"workplace_role,omitempty"`
+	WorkplaceRole WorkplaceRoleObject `json:"workplace_role,omitempty"` // You may provide an identifier OR permissions, but not both
 }
 
 type WorkplaceRoleObject struct {
-	Identifier  string   `json:"identifier,omitempty"`
-	Permissions []string `json:"permissions,omitempty"`
+	Identifier  string   `json:"identifier,omitempty"`  // Identifier of an existing workplace role
+	Permissions []string `json:"permissions,omitempty"` // Workplace permissions to grant
 }
 
 func (dp *doppler) ListServiceAccounts(page, limit *int) (*ServiceAccounts, error) {
@@ -57,7 +57,6 @@ func (dp *doppler) ListServiceAccounts(page, limit *int) (*ServiceAccounts, erro
 	if err != nil {
 		return nil, err
 	}
-
 	data := &ServiceAccounts{}
 	err = json.Unmarshal(body, data)
 	if err != nil {
@@ -92,7 +91,7 @@ func (dp *doppler) RetrieveServiceAccount(slug string) (*ServiceAccountModel, er
 }
 
 func (dp *doppler) CreateServiceAccount(params ServiceAccountBodyParams) (*ServiceAccountModel, error) {
-	if params.WorkplaceRole.Identifier != "" || params.WorkplaceRole.Permissions != nil {
+	if params.WorkplaceRole.Identifier != "" && params.WorkplaceRole.Permissions != nil {
 		return nil, errors.New("you may provide an identifier OR permissions, but not both")
 	}
 	payload, err := json.Marshal(params)
@@ -123,7 +122,7 @@ func (dp *doppler) CreateServiceAccount(params ServiceAccountBodyParams) (*Servi
 }
 
 func (dp *doppler) UpdateServiceAccount(slug string, params ServiceAccountBodyParams) (*ServiceAccountModel, error) {
-	if params.WorkplaceRole.Identifier != "" || params.WorkplaceRole.Permissions != nil {
+	if params.WorkplaceRole.Identifier != "" && params.WorkplaceRole.Permissions != nil {
 		return nil, errors.New("you may provide an identifier OR permissions, but not both")
 	}
 	payload, err := json.Marshal(params)
