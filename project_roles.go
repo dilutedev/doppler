@@ -15,7 +15,7 @@ type ProjectRole struct {
 
 type ProjectRoles struct {
 	ProjectRoles []ProjectRole `json:"roles,omitempty"`
-	Success      string        `json:"success,omitempty"`
+	Success      bool        `json:"success,omitempty"`
 }
 
 type ProjectPermissions struct {
