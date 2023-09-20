@@ -16,7 +16,7 @@ type Group struct {
 
 type Groups struct {
 	Groups  []Group `json:"groups,omitempty"`
-	Success string  `json:"success,omitempty"`
+	Success bool  `json:"success,omitempty"`
 }
 
 type GroupBodyParams struct {
