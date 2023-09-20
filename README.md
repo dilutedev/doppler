@@ -17,7 +17,7 @@ Go Client for Doppler
 - [x] Integrations
 - [x] Secrets Sync
 - [x] Dynamic Secrets
-- [ ] Service Tokens
+- [x] Service Tokens
 - [x] Invites
 - [x] Groups
 - [x] Service Accounts
