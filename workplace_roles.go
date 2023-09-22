@@ -1,6 +1,7 @@
 package doppler
 
 import (
+	"bytes"
 	"encoding/json"
 	"net/http"
 )
@@ -16,7 +17,7 @@ type WorkplaceRole struct {
 
 type WorkplaceRoles struct {
 	WorkplaceRoles []WorkplaceRole `json:"roles,omitempty"`
-	Success        string          `json:"success,omitempty"`
+	Success        bool          `json:"success,omitempty"`
 }
 
 type WorkplacePermissions struct {
@@ -27,6 +28,11 @@ type WorkplacePermissions struct {
 type RetrieveWorkplaceResponse struct {
 	Role    ProjectRole `json:"role"`
 	Success bool        `json:"success"`
+}
+
+type CreateRoleParams struct {
+	Name        string   `json:"name,omitempty"`
+	Permissions []string `json:"permissions,omitempty"`
 }
 
 func (dp *doppler) ListWorkplaceRoles() (*WorkplaceRoles, error) {
@@ -101,12 +107,16 @@ func (dp *doppler) RetrieveWorkplaceRole(role string) (*RetrieveWorkplaceRespons
 	return data, nil
 }
 
-func (dp *doppler) CreateWorkplaceRole(role string) (*WorkplaceRole, error) {
+func (dp *doppler) CreateWorkplaceRole(params CreateRoleParams) (*WorkplaceRole, error) {
 	// TODO: Add payload (missing in docs)
+	payload, err := json.Marshal(params)
+	if err != nil {
+		return nil, err
+	}
 	request, err := http.NewRequest(
 		http.MethodPost,
 		"/v3/workplace/roles",
-		nil,
+		bytes.NewReader(payload),
 	)
 	if err != nil {
 		return nil, err
